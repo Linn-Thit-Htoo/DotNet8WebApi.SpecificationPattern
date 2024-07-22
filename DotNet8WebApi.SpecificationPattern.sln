@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35005.142
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8WebApi.SpecificationPattern.Api", "DotNet8WebApi.SpecificationPattern.Api\DotNet8WebApi.SpecificationPattern.Api.csproj", "{E8AAA09E-CB02-4762-977E-4E0503D36A58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet8WebApi.SpecificationPattern.Api", "DotNet8WebApi.SpecificationPattern.Api\DotNet8WebApi.SpecificationPattern.Api.csproj", "{E8AAA09E-CB02-4762-977E-4E0503D36A58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8WebApi.SpecificationPattern.DbService", "DotNet8WebApi.SpecificationPattern.DbService\DotNet8WebApi.SpecificationPattern.DbService.csproj", "{7B519956-FFB5-4AF1-AB18-53E067666DBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet8WebApi.SpecificationPattern.DbService", "DotNet8WebApi.SpecificationPattern.DbService\DotNet8WebApi.SpecificationPattern.DbService.csproj", "{7B519956-FFB5-4AF1-AB18-53E067666DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8WebApi.SpecificationPattern.Models", "DotNet8WebApi.SpecificationPattern.Models\DotNet8WebApi.SpecificationPattern.Models.csproj", "{563EA210-9B16-4D06-B3E4-A93ABEB2177B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet8WebApi.SpecificationPattern.Models", "DotNet8WebApi.SpecificationPattern.Models\DotNet8WebApi.SpecificationPattern.Models.csproj", "{563EA210-9B16-4D06-B3E4-A93ABEB2177B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8WebApi.SpecificationPattern.Repositories", "DotNet8WebApi.SpecificationPattern.Repositories\DotNet8WebApi.SpecificationPattern.Repositories.csproj", "{A95625D0-C07F-4F25-861C-B65C72E11923}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet8WebApi.SpecificationPattern.Repositories", "DotNet8WebApi.SpecificationPattern.Repositories\DotNet8WebApi.SpecificationPattern.Repositories.csproj", "{A95625D0-C07F-4F25-861C-B65C72E11923}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8WebApi.SpecificationPattern.Mapper", "DotNet8WebApi.SpecificationPattern.Mapper\DotNet8WebApi.SpecificationPattern.Mapper.csproj", "{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A95625D0-C07F-4F25-861C-B65C72E11923}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A95625D0-C07F-4F25-861C-B65C72E11923}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A95625D0-C07F-4F25-861C-B65C72E11923}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

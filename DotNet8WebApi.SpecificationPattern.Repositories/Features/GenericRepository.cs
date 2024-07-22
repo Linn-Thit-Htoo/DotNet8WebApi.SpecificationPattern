@@ -22,16 +22,52 @@ namespace DotNet8WebApi.SpecificationPattern.Repositories.Features
             _dbSet = _context.Set<T>();
         }
 
+        public async Task AddAsync(T model)
+        {
+            await _dbSet.AddAsync(model);
+        }
+
+        //public async Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification)
+        //{
+        //    var lst = await _dbSet.AsQueryable().ApplySpecification(specification).ToListAsync();
+        //    return Result<List<T>>.SuccessResult(lst);
+        //}
+
         public async Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification)
         {
-            var lst = await _dbSet.AsQueryable().ApplySpecification(specification).ToListAsync();
-            return Result<List<T>>.SuccessResult(lst);
+            Result<List<T>> responseModel;
+            try
+            {
+                var lst = await _dbSet.AsQueryable().ApplySpecification(specification).ToListAsync();
+                responseModel = Result<List<T>>.SuccessResult(lst);
+            }
+            catch (Exception ex)
+            {
+                responseModel = Result<List<T>>.FailureResult(ex);
+            }
+
+            return responseModel;
         }
 
         public async Task<Result<T>> GetByIdAsync(ISpecification<T> specification)
         {
-            var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
-            return Result<T>.SuccessResult(item!);
+            Result<T> responseModel;
+            try
+            {
+                var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
+                responseModel = Result<T>.SuccessResult(item!);
+            }
+            catch (Exception ex)
+            {
+                responseModel = Result<T>.FailureResult(ex);
+            }
+
+            return responseModel;
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
         }
     }
 }

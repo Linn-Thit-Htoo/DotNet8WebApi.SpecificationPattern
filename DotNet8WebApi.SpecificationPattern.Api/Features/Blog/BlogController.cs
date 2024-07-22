@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using DotNet8WebApi.SpecificationPattern.Models.Features.Blog;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
@@ -17,15 +18,22 @@ namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
         [HttpGet]
         public async Task<IActionResult> GetBlogs()
         {
-            var lst = await _bL_Blog.GetBlogs();
-            return Content(lst);
+            var result = await _bL_Blog.GetBlogs();
+            return Content(result);
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBlogById(int id)
         {
-            var item = await _bL_Blog.GetBlogById(id);
-            return Content(item);
+            var result = await _bL_Blog.GetBlogById(id);
+            return Content(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBlog([FromBody] BlogRequestModel requestModel)
+        {
+            var result = await _bL_Blog.CreateBlog(requestModel);
+            return Content(result);
         }
     }
 }

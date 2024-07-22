@@ -13,5 +13,7 @@ namespace DotNet8WebApi.SpecificationPattern.Repositories.Features
     {
         Task<Result<T>> GetByIdAsync(ISpecification<T> specification);
         Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification);
+        Task AddAsync(T model);
+        Task SaveChangesAsync();
     }
 }

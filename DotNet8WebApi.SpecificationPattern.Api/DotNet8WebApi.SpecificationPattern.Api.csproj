@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.DbService\DotNet8WebApi.SpecificationPattern.DbService.csproj" />
+    <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Mapper\DotNet8WebApi.SpecificationPattern.Mapper.csproj" />
     <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Models\DotNet8WebApi.SpecificationPattern.Models.csproj" />
     <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Repositories\DotNet8WebApi.SpecificationPattern.Repositories.csproj" />
   </ItemGroup>

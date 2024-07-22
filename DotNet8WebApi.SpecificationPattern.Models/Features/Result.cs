@@ -50,5 +50,10 @@ namespace DotNet8WebApi.SpecificationPattern.Models.Features
         {
             return result > 0 ? Result<T>.SuccessResult() : Result<T>.FailureResult();
         }
+
+        public static Result<T> SaveSuccessResult()
+        {
+            return Result<T>.SuccessResult(MessageResource.SaveSuccess);
+        }
     }
 }
