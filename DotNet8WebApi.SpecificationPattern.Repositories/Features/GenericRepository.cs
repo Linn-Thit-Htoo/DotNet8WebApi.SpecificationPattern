@@ -9,65 +9,64 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DotNet8WebApi.SpecificationPattern.Repositories.Features
+namespace DotNet8WebApi.SpecificationPattern.Repositories.Features;
+
+public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    private readonly AppDbContext _context;
+    private readonly DbSet<T> _dbSet;
+
+    public GenericRepository(AppDbContext context)
     {
-        private readonly AppDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        _context = context;
+        _dbSet = _context.Set<T>();
+    }
 
-        public GenericRepository(AppDbContext context)
+    public async Task AddAsync(T model)
+    {
+        await _dbSet.AddAsync(model);
+    }
+
+    //public async Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification)
+    //{
+    //    var lst = await _dbSet.AsQueryable().ApplySpecification(specification).ToListAsync();
+    //    return Result<List<T>>.SuccessResult(lst);
+    //}
+
+    public async Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification)
+    {
+        Result<List<T>> responseModel;
+        try
         {
-            _context = context;
-            _dbSet = _context.Set<T>();
+            var lst = await _dbSet.AsQueryable().ApplySpecification(specification).ToListAsync();
+            responseModel = Result<List<T>>.SuccessResult(lst);
+        }
+        catch (Exception ex)
+        {
+            responseModel = Result<List<T>>.FailureResult(ex);
         }
 
-        public async Task AddAsync(T model)
+        return responseModel;
+    }
+
+    public async Task<Result<T>> GetByIdAsync(ISpecification<T> specification)
+    {
+        Result<T> responseModel;
+        try
         {
-            await _dbSet.AddAsync(model);
+            var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
+            responseModel = Result<T>.SuccessResult(item!);
+        }
+        catch (Exception ex)
+        {
+            responseModel = Result<T>.FailureResult(ex);
         }
 
-        //public async Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification)
-        //{
-        //    var lst = await _dbSet.AsQueryable().ApplySpecification(specification).ToListAsync();
-        //    return Result<List<T>>.SuccessResult(lst);
-        //}
+        return responseModel;
+    }
 
-        public async Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification)
-        {
-            Result<List<T>> responseModel;
-            try
-            {
-                var lst = await _dbSet.AsQueryable().ApplySpecification(specification).ToListAsync();
-                responseModel = Result<List<T>>.SuccessResult(lst);
-            }
-            catch (Exception ex)
-            {
-                responseModel = Result<List<T>>.FailureResult(ex);
-            }
-
-            return responseModel;
-        }
-
-        public async Task<Result<T>> GetByIdAsync(ISpecification<T> specification)
-        {
-            Result<T> responseModel;
-            try
-            {
-                var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
-                responseModel = Result<T>.SuccessResult(item!);
-            }
-            catch (Exception ex)
-            {
-                responseModel = Result<T>.FailureResult(ex);
-            }
-
-            return responseModel;
-        }
-
-        public async Task SaveChangesAsync()
-        {
-            await _context.SaveChangesAsync();
-        }
+    public async Task SaveChangesAsync()
+    {
+        await _context.SaveChangesAsync();
     }
 }
