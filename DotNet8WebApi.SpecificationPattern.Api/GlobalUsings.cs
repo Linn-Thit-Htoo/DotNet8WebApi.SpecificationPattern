@@ -1,5 +1,6 @@
 // Global using directives
 
+global using DotNet8WebApi.SpecificationPattern.Api;
 global using DotNet8WebApi.SpecificationPattern.Api.Features.Blog;
 global using DotNet8WebApi.SpecificationPattern.DbService.AppDbContexts;
 global using DotNet8WebApi.SpecificationPattern.Mapper;
