@@ -54,19 +54,19 @@ public class BL_Blog
 
             var item = result.Data;
 
-            if (!requestModel.BlogTitle.IsNullOrEmpty())
+            if (!requestModel.BlogTitle!.IsNullOrEmpty())
             {
-                item.BlogTitle = requestModel.BlogTitle;
+                item.BlogTitle = requestModel.BlogTitle!;
             }
 
-            if (!requestModel.BlogAuthor.IsNullOrEmpty())
+            if (!requestModel.BlogAuthor!.IsNullOrEmpty())
             {
-                item.BlogAuthor = requestModel.BlogAuthor;
+                item.BlogAuthor = requestModel.BlogAuthor!;
             }
 
-            if (!requestModel.BlogContent.IsNullOrEmpty())
+            if (!requestModel.BlogContent!.IsNullOrEmpty())
             {
-                item.BlogContent = requestModel.BlogContent;
+                item.BlogContent = requestModel.BlogContent!;
             }
 
             _genericRepository.Update(item);
@@ -79,7 +79,7 @@ public class BL_Blog
             responseModel = Result<Tbl_Blog>.FailureResult(ex);
         }
 
-        result:
+    result:
         return responseModel;
     }
 
