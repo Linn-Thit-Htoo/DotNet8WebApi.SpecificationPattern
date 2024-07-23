@@ -97,4 +97,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     result:
         return responseModel;
     }
+
+    public void Update(T model)
+    {
+        _dbSet.Update(model);
+    }
 }
