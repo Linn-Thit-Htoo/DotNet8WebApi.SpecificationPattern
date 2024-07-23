@@ -1,9 +1,7 @@
-﻿using DotNet8WebApi.SpecificationPattern.DbService.AppDbContexts;
-using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications;
+﻿using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
