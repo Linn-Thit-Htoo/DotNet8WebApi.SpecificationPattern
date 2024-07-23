@@ -1,6 +1,7 @@
 ﻿using DotNet8WebApi.SpecificationPattern.DbService.AppDbContexts;
 using DotNet8WebApi.SpecificationPattern.Models;
 using DotNet8WebApi.SpecificationPattern.Models.Features;
+using DotNet8WebApi.SpecificationPattern.Models.Resources;
 using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -20,11 +21,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         _context = context;
         _dbSet = _context.Set<T>();
-    }
-
-    public async Task AddAsync(T model)
-    {
-        await _dbSet.AddAsync(model);
     }
 
     public async Task<Result<List<T>>> GetAllAsync(ISpecification<T> specification)
@@ -49,6 +45,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         try
         {
             var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
+            if (item is null)
+            {
+                responseModel = Result<T>.NotFoundResult();
+                goto result;
+            }
+
             responseModel = Result<T>.SuccessResult(item!);
         }
         catch (Exception ex)
@@ -56,11 +58,43 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
             responseModel = Result<T>.FailureResult(ex);
         }
 
+    result:
         return responseModel;
+    }
+
+    public async Task AddAsync(T model)
+    {
+        await _dbSet.AddAsync(model);
     }
 
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<Result<T>> DeleteAsync(ISpecification<T> specification)
+    {
+        Result<T> responseModel;
+        try
+        {
+            var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
+            if (item is null)
+            {
+                responseModel = Result<T>.NotFoundResult();
+                goto result;
+            }
+
+            _dbSet.Remove(item);
+            await SaveChangesAsync();
+
+            responseModel = Result<T>.DeleteSuccessResult();
+        }
+        catch (Exception ex)
+        {
+            responseModel = Result<T>.FailureResult(ex);
+        }
+
+    result:
+        return responseModel;
     }
 }

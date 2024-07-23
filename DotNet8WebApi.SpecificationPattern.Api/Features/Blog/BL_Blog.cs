@@ -46,5 +46,21 @@ namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
 
             return responseModel;
         }
+
+        public async Task<Result<Tbl_Blog>> DeleteBlog(int id)
+        {
+            Result<Tbl_Blog> responseModel;
+            try
+            {
+                var spec = new DeleteBlogSpecification(x => x.BlogId == id);
+                responseModel = await _genericRepository.DeleteAsync(spec);
+            }
+            catch (Exception ex)
+            {
+                responseModel = Result<Tbl_Blog>.FailureResult(ex);
+            }
+
+            return responseModel;
+        }
     }
 }
