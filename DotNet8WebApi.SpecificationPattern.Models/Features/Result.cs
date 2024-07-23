@@ -56,6 +56,11 @@ namespace DotNet8WebApi.SpecificationPattern.Models.Features
             return Result<T>.SuccessResult(MessageResource.SaveSuccess);
         }
 
+        public static Result<T> UpdateSuccessResult()
+        {
+            return Result<T>.SuccessResult(MessageResource.UpdateSuccess);
+        }
+
         public static Result<T> DeleteSuccessResult()
         {
             return Result<T>.SuccessResult(MessageResource.DeleteSuccess);

@@ -47,6 +47,39 @@ namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
             return responseModel;
         }
 
+        public async Task<Result<Tbl_Blog>> UpdateBlog(BlogRequestModel requestModel, int id)
+        {
+            Result<Tbl_Blog> responseModel;
+            try
+            {
+                var spec = new GetBlogByIdSpecification(x => x.BlogId == id);
+                var result = await _genericRepository.GetByIdAsync(spec);
+                if (result.IsError)
+                {
+                    responseModel = result;
+                    goto result;
+                }
+
+                var item = result.Data;
+
+                item.BlogTitle = requestModel.BlogTitle;
+                item.BlogAuthor = requestModel.BlogAuthor;
+                item.BlogContent = requestModel.BlogContent;
+
+                _genericRepository.Update(item);
+                await _genericRepository.SaveChangesAsync();
+
+                responseModel = Result<Tbl_Blog>.UpdateSuccessResult();
+            }
+            catch (Exception ex)
+            {
+                responseModel = Result<Tbl_Blog>.FailureResult(ex);
+            }
+
+        result:
+            return responseModel;
+        }
+
         public async Task<Result<Tbl_Blog>> DeleteBlog(int id)
         {
             Result<Tbl_Blog> responseModel;
