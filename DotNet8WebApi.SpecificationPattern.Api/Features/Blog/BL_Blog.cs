@@ -1,13 +1,4 @@
-﻿using DotNet8WebApi.SpecificationPattern.DbService.AppDbContexts;
-using DotNet8WebApi.SpecificationPattern.Mapper;
-using DotNet8WebApi.SpecificationPattern.Models.Features;
-using DotNet8WebApi.SpecificationPattern.Models.Features.Blog;
-using DotNet8WebApi.SpecificationPattern.Repositories.Features;
-using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications.Blog;
-using DotNet8WebApi.SpecificationPattern.Shared;
-using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
+﻿namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
 {
     public class BL_Blog
     {

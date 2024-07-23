@@ -1,5 +1,4 @@
-﻿using DotNet8WebApi.SpecificationPattern.Models.Features.Blog;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog

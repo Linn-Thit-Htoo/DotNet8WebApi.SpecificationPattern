@@ -1,6 +1,4 @@
 ﻿using DotNet8WebApi.SpecificationPattern.Api.Features.Blog;
-using DotNet8WebApi.SpecificationPattern.DbService.AppDbContexts;
-using DotNet8WebApi.SpecificationPattern.Repositories.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
