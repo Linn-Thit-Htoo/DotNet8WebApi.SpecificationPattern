@@ -36,6 +36,13 @@ namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
             return Content(result);
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateBlog([FromBody] BlogRequestModel requestModel, int id)
+        {
+            var result = await _bL_Blog.UpdateBlog(requestModel, id);
+            return Content(result);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBlog(int id)
         {
