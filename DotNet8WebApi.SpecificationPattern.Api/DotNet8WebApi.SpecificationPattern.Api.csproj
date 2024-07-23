@@ -26,6 +26,7 @@
     <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Mapper\DotNet8WebApi.SpecificationPattern.Mapper.csproj" />
     <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Models\DotNet8WebApi.SpecificationPattern.Models.csproj" />
     <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Repositories\DotNet8WebApi.SpecificationPattern.Repositories.csproj" />
+    <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Shared\DotNet8WebApi.SpecificationPattern.Shared.csproj" />
   </ItemGroup>
 
 </Project>

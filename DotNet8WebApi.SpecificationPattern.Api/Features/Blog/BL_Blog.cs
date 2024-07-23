@@ -4,6 +4,7 @@ using DotNet8WebApi.SpecificationPattern.Models.Features;
 using DotNet8WebApi.SpecificationPattern.Models.Features.Blog;
 using DotNet8WebApi.SpecificationPattern.Repositories.Features;
 using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications.Blog;
+using DotNet8WebApi.SpecificationPattern.Shared;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
@@ -47,7 +48,7 @@ namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
             return responseModel;
         }
 
-        public async Task<Result<Tbl_Blog>> UpdateBlog(BlogRequestModel requestModel, int id)
+        public async Task<Result<Tbl_Blog>> PatchBlog(BlogRequestModel requestModel, int id)
         {
             Result<Tbl_Blog> responseModel;
             try
@@ -62,9 +63,20 @@ namespace DotNet8WebApi.SpecificationPattern.Api.Features.Blog
 
                 var item = result.Data;
 
-                item.BlogTitle = requestModel.BlogTitle;
-                item.BlogAuthor = requestModel.BlogAuthor;
-                item.BlogContent = requestModel.BlogContent;
+                if (!requestModel.BlogTitle.IsNullOrEmpty())
+                {
+                    item.BlogTitle = requestModel.BlogTitle;
+                }
+
+                if (!requestModel.BlogAuthor.IsNullOrEmpty())
+                {
+                    item.BlogAuthor = requestModel.BlogAuthor;
+                }
+
+                if (!requestModel.BlogContent.IsNullOrEmpty())
+                {
+                    item.BlogContent = requestModel.BlogContent;
+                }
 
                 _genericRepository.Update(item);
                 await _genericRepository.SaveChangesAsync();

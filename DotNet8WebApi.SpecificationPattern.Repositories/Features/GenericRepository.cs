@@ -67,9 +67,9 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         await _dbSet.AddAsync(model);
     }
 
-    public async Task SaveChangesAsync()
+    public void Update(T model)
     {
-        await _context.SaveChangesAsync();
+        _dbSet.Update(model);
     }
 
     public async Task<Result<T>> DeleteAsync(ISpecification<T> specification)
@@ -98,8 +98,8 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         return responseModel;
     }
 
-    public void Update(T model)
+    public async Task SaveChangesAsync()
     {
-        _dbSet.Update(model);
+        await _context.SaveChangesAsync();
     }
 }

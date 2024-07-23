@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet8WebApi.Specification
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet8WebApi.SpecificationPattern.Repositories", "DotNet8WebApi.SpecificationPattern.Repositories\DotNet8WebApi.SpecificationPattern.Repositories.csproj", "{A95625D0-C07F-4F25-861C-B65C72E11923}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8WebApi.SpecificationPattern.Mapper", "DotNet8WebApi.SpecificationPattern.Mapper\DotNet8WebApi.SpecificationPattern.Mapper.csproj", "{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNet8WebApi.SpecificationPattern.Mapper", "DotNet8WebApi.SpecificationPattern.Mapper\DotNet8WebApi.SpecificationPattern.Mapper.csproj", "{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNet8WebApi.SpecificationPattern.Shared", "DotNet8WebApi.SpecificationPattern.Shared\DotNet8WebApi.SpecificationPattern.Shared.csproj", "{8AC5AFBA-261F-481C-AF23-F88FD9F4A17A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9FF46F6E-DF70-49C9-AD00-37A7EC837E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC5AFBA-261F-481C-AF23-F88FD9F4A17A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC5AFBA-261F-481C-AF23-F88FD9F4A17A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC5AFBA-261F-481C-AF23-F88FD9F4A17A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC5AFBA-261F-481C-AF23-F88FD9F4A17A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

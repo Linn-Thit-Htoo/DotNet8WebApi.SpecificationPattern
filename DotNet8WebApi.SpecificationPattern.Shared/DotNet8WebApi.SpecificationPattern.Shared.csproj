@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\DotNet8WebApi.SpecificationPattern.Repositories\DotNet8WebApi.SpecificationPattern.Repositories.csproj" />
-  </ItemGroup>
-
 </Project>
