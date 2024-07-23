@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+﻿namespace DotNet8WebApi.SpecificationPattern.Api.Features;
 
-namespace DotNet8WebApi.SpecificationPattern.Api.Features
+[Route("api/[controller]")]
+[ApiController]
+public class BaseController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BaseController : ControllerBase
+    protected IActionResult Content(object obj)
     {
-        protected IActionResult Content(object obj)
-        {
-            return Content(JsonConvert.SerializeObject(obj), "application/json");
-        }
+        return Content(JsonConvert.SerializeObject(obj), "application/json");
     }
 }

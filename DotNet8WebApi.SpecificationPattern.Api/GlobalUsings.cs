@@ -8,3 +8,4 @@ global using DotNet8WebApi.SpecificationPattern.Repositories.Features;
 global using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications.Blog;
 global using DotNet8WebApi.SpecificationPattern.Shared;
 global using Microsoft.AspNetCore.Mvc;
+global using Newtonsoft.Json;
