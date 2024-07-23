@@ -1,17 +1,7 @@
-﻿using DotNet8WebApi.SpecificationPattern.Models;
-using DotNet8WebApi.SpecificationPattern.Models.Features;
-using DotNet8WebApi.SpecificationPattern.Models.Resources;
-using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DotNet8WebApi.SpecificationPattern.Repositories.Features;
 
-namespace DotNet8WebApi.SpecificationPattern.Repositories.Features;
-
-public class GenericRepository<T> : IGenericRepository<T> where T : class
+public class GenericRepository<T> : IGenericRepository<T>
+    where T : class
 {
     private readonly AppDbContext _context;
     private readonly DbSet<T> _dbSet;
@@ -43,7 +33,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         Result<T> responseModel;
         try
         {
-            var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
+            var item = await _dbSet
+                .AsQueryable()
+                .ApplySpecification(specification)
+                .FirstOrDefaultAsync();
             if (item is null)
             {
                 responseModel = Result<T>.NotFoundResult();
@@ -76,7 +69,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
         Result<T> responseModel;
         try
         {
-            var item = await _dbSet.AsQueryable().ApplySpecification(specification).FirstOrDefaultAsync();
+            var item = await _dbSet
+                .AsQueryable()
+                .ApplySpecification(specification)
+                .FirstOrDefaultAsync();
             if (item is null)
             {
                 responseModel = Result<T>.NotFoundResult();

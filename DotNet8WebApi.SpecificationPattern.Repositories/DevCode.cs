@@ -1,35 +1,33 @@
-﻿using DotNet8WebApi.SpecificationPattern.Repositories.Features.Specifications;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace DotNet8WebApi.SpecificationPattern.Repositories;
 
-namespace DotNet8WebApi.SpecificationPattern.Repositories
+public static class DevCode
 {
-    public static class DevCode
+    public static IQueryable<T> ApplySpecification<T>(
+        this IQueryable<T> query,
+        ISpecification<T> specification
+    )
+        where T : class
     {
-        public static IQueryable<T> ApplySpecification<T>(this IQueryable<T> query, ISpecification<T> specification) where T : class
+        if (specification.Criteria is not null)
         {
-            if (specification.Criteria is not null)
-            {
-                query = query.Where(specification.Criteria);
-            }
-
-            query = specification.Includes.Aggregate(query, (current, include) => current.Include(include));
-
-            if (specification.OrderBy is not null)
-            {
-                query = query.OrderBy(specification.OrderBy);
-            }
-
-            if (specification.OrderByDescending is not null)
-            {
-                query = query.OrderByDescending(specification.OrderByDescending);
-            }
-
-            return query;
+            query = query.Where(specification.Criteria);
         }
+
+        query = specification.Includes.Aggregate(
+            query,
+            (current, include) => current.Include(include)
+        );
+
+        if (specification.OrderBy is not null)
+        {
+            query = query.OrderBy(specification.OrderBy);
+        }
+
+        if (specification.OrderByDescending is not null)
+        {
+            query = query.OrderByDescending(specification.OrderByDescending);
+        }
+
+        return query;
     }
 }
